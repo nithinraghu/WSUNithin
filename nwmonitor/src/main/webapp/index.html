@@ -1,5 +1,16 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
+<!doctype html>
+<html ng-app >
+	<head>
+		<title> Servers </title>
+		<script src="js/lib/angular.js"></script>
+    	<script src="js/controllers/controllers.js"></script>
+	</head>
+
+	<body>
+		<div ng-controller="MainController">
+			<li ng-repeat="server in servers">
+        		{{server.name}} has an id:  {{server.id}}
+    		</li>
+		</div>
+	</body>
 </html>

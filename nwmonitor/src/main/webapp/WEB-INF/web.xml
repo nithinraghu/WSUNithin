@@ -1,7 +1,37 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
-</web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>HelloWorld Application</display-name>
+    <description>
+        This is a simple web application with a source code organization
+        based on the recommendations of the Application Developer's Guide.
+    </description>
+
+    <servlet>
+    	<servlet-name>Dispatcher</servlet-name>
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    	<init-param>
+        	<param-name>contextClass</param-name>
+        	<param-value>
+            	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+        	</param-value>
+    	</init-param>
+    	<init-param>
+        	<param-name>contextConfigLocation</param-name>
+        	<param-value>
+        	    nwmonitor.config.WebConfig
+        	</param-value>
+    	</init-param>
+	</servlet>
+
+	<servlet-mapping>
+    	<servlet-name>Dispatcher</servlet-name>
+    	<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>     
+

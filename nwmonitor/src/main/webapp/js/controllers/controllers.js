@@ -6,3 +6,4 @@ function MainController($scope, $http) {
     	}
     );
 }
+

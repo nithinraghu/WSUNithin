@@ -1,16 +1,26 @@
+/**
+ * Controller for overview grid in home page 
+ */
+
 var GridController = (function () {
 
-	function GrController($scope,RestCallService)
+	/*
+	 * Constructor 
+	 */
+	function GrController($scope,Server)
 	{		
-		RestCallService.getServers().then(function(data){
-			$scope.gridData = data.data;
+		Server.getOverviewGridData().then(function(data){
+			$scope.gridData = data;
 		});										
 	};	
 
+	/*
+	 * Injection parameters
+	 */
 	GrController.injection = [
 	                          '$scope',
-	                          'RestCallService',
+	                          'Server',
 	                          GrController
-	                          ];
+	                          ];	
 	return GrController;
 })();

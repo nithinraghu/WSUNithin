@@ -12,3 +12,10 @@ tomcat/webapps/nwmonitor/META-INF/maven/com.wsu.nithin/nwmonitor/pom.properties
 tomcat/webapps/nwmonitor/META-INF/maven/com.wsu.nithin/nwmonitor/pom.properties
 tomcat/webapps/nwmonitor/META-INF/maven/com.wsu.nithin/nwmonitor/pom.xml
 tomcat/webapps/nwmonitor/WEB-INF/web.xml
+tomcat/webapps/nwmonitor.war
+tomcat/webapps/nwmonitor.war
+tomcat/webapps/nwmonitor/index.html
+tomcat/webapps/nwmonitor/META-INF/MANIFEST.MF
+tomcat/webapps/nwmonitor/META-INF/maven/com.wsu.nithin/nwmonitor/pom.properties
+tomcat/webapps/nwmonitor/META-INF/maven/com.wsu.nithin/nwmonitor/pom.xml
+tomcat/webapps/nwmonitor/WEB-INF/web.xml

@@ -10,7 +10,7 @@ var GridController = (function () {
 	function GrController($scope,Server)
 	{		
 		Server.getOverviewGridData().then(function(data){
-			$scope.gridData = data;
+			//$scope.gridData = data;
 		});
 		
 		$scope.gridData = [{title : "CPU Utilization", critical: 5, warning: 10, ok:5},
@@ -21,7 +21,7 @@ var GridController = (function () {
 		$scope.gridOptions = { data: 'gridData', 
 							   columnDefs: [{field: 'title', displayName: 'Title'}, 
 							                {field:'critical', displayName:'Critical'},
-							                {field:'warning', displayName:'Warning'}
+							                {field:'warning', displayName:'Warning'},
 							                {field:'ok', displayName:'OK'}							                
 							   			   ]
 							 }; 

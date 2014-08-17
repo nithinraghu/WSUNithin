@@ -6,6 +6,8 @@ import java.util.UUID;
 public class Server implements Serializable{
 	static int counter = 0;
 	
+	///@Todo - Add fields => title, critical, warning, ok
+	
 	static Object lock = new Object();
 	/**
 	 * 

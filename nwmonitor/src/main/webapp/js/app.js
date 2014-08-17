@@ -2,7 +2,7 @@
 
 /* App Module */
 
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('myApp',['ngGrid']);
 
 myApp.service('RestCallService', RestCallService.injection)
 .service('Server', Server.injection)

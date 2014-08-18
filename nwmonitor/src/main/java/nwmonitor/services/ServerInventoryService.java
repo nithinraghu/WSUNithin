@@ -7,6 +7,6 @@ import nwmonitor.domain.ServerStats;
 
 public interface ServerInventoryService {
 	
-	List<ServerStats> getAllServers();
+	List<Server> getAllServers();
 
 }

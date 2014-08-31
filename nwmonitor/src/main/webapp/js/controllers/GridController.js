@@ -10,11 +10,11 @@ var GrControllerModule = (function () {
 	function GrController($scope,Server)
 	{	
 		$scope.gridOptions = { data: 'gridData', 
-							   columnDefs: [{field: 'title', displayName: 'Title'}, 
-							                {field:'critical', displayName:'Critical'},
-							                {field:'warning', displayName:'Warning'},
-							                {field:'ok', displayName:'OK'}							                
-							   			   ]
+							   columnDefs: [{field: 'title', displayName: 'Title', width: "40%", resizable: false, enableCellSelection: false}, 
+							                {field:'critical', displayName:'Critical',width: "20%",resizable: false, enableCellSelection: false},
+							                {field:'warning', displayName:'Warning',width: "20%",resizable: false, enableCellSelection: false},
+							                {field:'ok', displayName:'OK',width: "20%",resizable: false, enableCellSelection: false}							                
+							   			   ]							   
 							 }; 	
 		Server.getOverviewGridData().then(function(data){
 			var servers = data;

@@ -3,7 +3,6 @@
 
 .gridStyle {
     border: 1px solid rgb(212,212,212);
-    width: 400px; 
-    min-height: 300px;
-    height:auto;
+    width: 960px;     
+    height:123px;
 }

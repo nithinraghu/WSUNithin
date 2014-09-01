@@ -1,22 +1,18 @@
 
-<div class="span6">
-	<h2>CPU Utilization</h2>
-	<p>Gauge control</p>
-	<p>
-		<a class="ui-button" href="#">View details &raquo;</a>
-	</p>
-</div>
-<div class="span5">
-	<h2>Disk Usage</h2>
-	<p>Gauge control</p>
-	<p>
-		<a class="ui-button" href="#">View details &raquo;</a>
-	</p>
-</div>
-<div class="span5">
-	<h2>Network Utilization</h2>
-	<p>Gauge control</p>
-	<p>
-		<a class="ui-button" href="#">View details &raquo;</a>
-	</p>
+<div ng-controller="GaugeController">
+	<div class="span6">
+		<h2>CPU Utilization</h2>
+		<gauge-widget id="cpuUtilizationGauge"></gauge-widget>
+
+	</div>
+	<div class="span5">
+		<h2>Disk Usage</h2>
+		<gauge-widget id="diskUsageGauge"></gauge-widget>
+
+	</div>
+	<div class="span5">
+		<h2>Network Utilization</h2>
+		<gauge-widget id="networkUtilizationGauge"></gauge-widget>
+
+	</div>
 </div>

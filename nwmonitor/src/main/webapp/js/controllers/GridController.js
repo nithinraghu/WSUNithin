@@ -2,7 +2,7 @@
  * Controller for overview grid in home page 
  */
 
-var GrControllerModule = (function () {
+var GridControllerModule = (function () {
 
 	/*
 	 * Constructor 

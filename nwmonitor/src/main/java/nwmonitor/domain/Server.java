@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import nwmonitor.domain.constants.Thresholds;
 import nwmonitor.domain.enums.ServerStatus;
 
 public class Server implements Serializable{
@@ -15,9 +16,15 @@ public class Server implements Serializable{
 	
 	private ServerStatus cpuUtilization;
 	
+	private float cpuUtilizationPercent;
+	
 	private ServerStatus diskUsage;
 	
+	private float diskUsagePercent;
+	
 	private ServerStatus networkUtilization;
+	
+	private float networkUtilizationPercent;
 	
 	private String Name;
 	
@@ -58,8 +65,37 @@ public class Server implements Serializable{
 	
 	private void syncAllStatus(){
 		this.cpuUtilization = createNewStatus();
+		this.cpuUtilizationPercent = createNewPercent(this.cpuUtilization);
+		
 		this.diskUsage = createNewStatus();
+		this.diskUsagePercent = createNewPercent(this.diskUsage);
+		
 		this.networkUtilization = createNewStatus();
+		this.networkUtilizationPercent = createNewPercent(this.networkUtilization);
+	}
+
+	private float createNewPercent(ServerStatus status) {
+		
+		float minX;
+		float maxX;
+		
+		if(status == ServerStatus.CRITICAL)
+		{
+			minX = Thresholds.CRITICAL_THRESHOLD;
+			maxX = 100f;			
+		}
+		else if (status == ServerStatus.WARNING)
+		{
+			minX = Thresholds.WARNING_THRESHOLD;
+			maxX = Thresholds.CRITICAL_THRESHOLD;						
+		}
+		else
+		{
+			minX = 0f;
+			maxX = Thresholds.WARNING_THRESHOLD;						
+		}
+		
+		return RANDOM.nextFloat() * (maxX - minX) + minX;
 	}
 
 	public String getName() {
@@ -73,13 +109,25 @@ public class Server implements Serializable{
 	public ServerStatus getCpuUtilization() {
 		return cpuUtilization;
 	}
+	
+	public float getCpuUtilizationPercent() {
+		return cpuUtilizationPercent;
+	}
 
 	public ServerStatus getDiskUsage() {
 		return diskUsage;
 	}
+	
+	public float getDiskUsagePercent() {
+		return diskUsagePercent;
+	}
 
 	public ServerStatus getNetworkUtilization() {
 		return networkUtilization;
+	}
+	
+	public float getNetworkUtilizationPercent() {
+		return networkUtilizationPercent;
 	}
 	
 	public class TimerTaskExample extends TimerTask {

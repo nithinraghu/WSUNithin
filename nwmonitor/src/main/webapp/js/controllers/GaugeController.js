@@ -7,14 +7,14 @@ var GaugeControllerModule = (function () {
 	/*
 	 * Constructor 
 	 */
-	function GaugeController($scope,Server)
+	function GaugeController($scope,$interval,Server)
 	{	
 		
 		$scope.cpuUtilizationPercent = 90;
 		$scope.diskUsagePercent = 70;
-		$scope.networkUtilizationPercent = 50;
+		$scope.networkUtilizationPercent = 40;
 		
-		setInterval( function(){
+		$interval( function(){
 			
 			$scope.cpuUtilizationPercent = 100 - $scope.cpuUtilizationPercent;
 			$scope.diskUsagePercent = 100-$scope.diskUsagePercent;
@@ -29,6 +29,7 @@ var GaugeControllerModule = (function () {
 	 */
 	GaugeController.injection = [
 	                          '$scope',
+	                          '$interval',
 	                          GaugeController
 	                          ];	
 	return GaugeController;

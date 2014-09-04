@@ -27,15 +27,21 @@ var GaugeWidgetModule = (function () {
 													        height: 150
 												        },parent[0]);
 		
-			    			glossyCircular.startup();		
-			    		
+			    			glossyCircular.startup();	
 			    			
-			    			// start the UI update process; save the timeoutId for canceling
-			    		    timeoutId = $interval(function() {
-			    		    	glossyCircular.set("value", attrs.value); // update DOM
-			    		    }, 3000);
-							
 			    			
+			    			attrs.$observe('value', function (newValue) {
+			    				glossyCircular.set("value", newValue); 
+			    			});
+			    			
+			    			
+			    			/*
+			    			scope.$watch(attrs.value, function (newVal, oldVal, scope){			    				
+			    				glossyCircular.set("value", newVal); 
+			    			}, false);
+	      					*/
+			    						    						    			
+			    		    
 					});
 				}				
 	      		

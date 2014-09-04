@@ -15,7 +15,7 @@ var GaugeControllerModule = (function () {
 		$scope.networkUtilizationPercent = 40;
 		*/
 
-		// The following code should be moved to Server.js, it should return an object 
+		// Aggregation logic moved to Server.js, it returns an object 
 		// with the following fields :
 		// cpuAlert: "CRITICAL, WARNING OR OK" state
 		// diskAlert : "CRITICAL, WARNING OR OK" state

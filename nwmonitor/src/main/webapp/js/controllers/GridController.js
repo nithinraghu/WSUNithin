@@ -16,76 +16,29 @@ var GridControllerModule = (function () {
 							                {field:'ok', displayName:'OK',width: "20%",resizable: false, enableCellSelection: false}							                
 							   			   ]							   
 							 }; 	
+		var gridData = [];
+		
 		Server.getOverviewGridData().then(function(data){
-			var servers = data;
 			
-			var cpuCriticalCount = 0;
-			var cpuWarningCount = 0;
-			var cpuOkCount = 0;
+			var cpuCriticalCount = data.cpuCriticalCount;
+			var cpuWarningCount = data.cpuWarningCount;
+			var cpuOkCount = data.cpuOkCount;
+			var diskCriticalCount = data.diskCriticalCount;
+			var diskWarningCount = data.diskWarningCount;
+			var diskOkCount = data.diskOkCount;
+			var networkCriticalCount = data.networkCriticalCount;
+			var networkWarningCount = data.networkWarningCount;
+			var networkOkCount = data.networkOkCount;
 			
-			var diskCriticalCount = 0;
-			var diskWarningCount = 0;
-			var diskOkCount = 0;
-			
-			var networkCriticalCount = 0;
-			var networkWarningCount = 0;
-			var networkOkCount = 0;
-			
-			_.each(servers, function(server){
-				var cpuUtilization = server.cpuUtilization;
-				switch(cpuUtilization){
-					case "OK":
-						cpuOkCount++;
-						break;
-					case "WARNING":
-						cpuWarningCount++;
-						break;
-					case "CRITICAL":
-						cpuCriticalCount++;
-						break;
-				} 
-				
-				var diskUsage = server.diskUsage;
-				switch(diskUsage){
-					case "OK":
-						diskOkCount++;
-						break;
-					case "WARNING":
-						diskWarningCount++;
-						break;
-					case "CRITICAL":
-						diskCriticalCount++;
-						break;
-				} 
-				
-				var networkUtilization = server.networkUtilization;
-				switch(networkUtilization){
-					case "OK":
-						networkOkCount++;
-						break;
-					case "WARNING":
-						networkWarningCount++;
-						break;
-					case "CRITICAL":
-						networkCriticalCount++;
-						break;
-				} 
-				
+			$scope.gridData = [  {title : "CPU Utilization", critical: cpuCriticalCount, warning: cpuWarningCount, ok:cpuOkCount},
+				                 {title : "Disk Usage", critical: diskCriticalCount, warning: diskWarningCount, ok:diskOkCount},
+				                 {title : "Network Utilization", critical: networkCriticalCount, warning: networkWarningCount, ok:networkOkCount}
+				                ];
 				
 			});
 			
-			$scope.gridData = [{title : "CPU Utilization", critical: cpuCriticalCount, warning: cpuWarningCount, ok:cpuOkCount},
-		                 {title : "Disk Usage", critical: diskCriticalCount, warning: diskWarningCount, ok:diskOkCount},
-		                 {title : "Network Utilization", critical: networkCriticalCount, warning: networkWarningCount, ok:networkOkCount}
-		                ];
-			
-			
-			
-		});
-		
-		
-		
-		
+			$scope.gridData = gridData;
+									
 	};	
 
 	/*

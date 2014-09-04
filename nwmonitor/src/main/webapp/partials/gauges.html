@@ -2,14 +2,14 @@
 <div ng-controller="GaugeController">
 	<div class="span6">
 		<h2>CPU Utilization</h2>		 
-		<gauge-widget id="cpuUtilizationGauge"  value ={{cpuUtilizationPercent}}></gauge-widget>		 		
+		<gauge-widget id="cpuUtilizationGauge"  value ={{maxCpuPercent}}></gauge-widget>		 		
 	</div>
 	<div class="span5">
 		<h2>Disk Usage</h2>		 
-		<gauge-widget id="diskUsageGauge" value ={{diskUsagePercent}}></gauge-widget> 		 	
+		<gauge-widget id="diskUsageGauge" value ={{maxDiskPercent}}></gauge-widget> 		 	
 	</div>
 	<div class="span5">
 		<h2>Network Utilization</h2>				
-		<gauge-widget id="networkUtilizationGauge"  value ={{networkUtilizationPercent}}></gauge-widget>			
+		<gauge-widget id="networkUtilizationGauge"  value ={{maxNetworkPercent}}></gauge-widget>			
 	</div>
 </div>

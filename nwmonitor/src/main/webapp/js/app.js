@@ -8,7 +8,8 @@ myApp.service('RestCallService', RestCallService.injection)
 .service('Server', Server.injection)
 .controller('GridController', GridControllerModule.injection)
 .controller('GaugeController', GaugeControllerModule.injection)
-.directive('gaugeWidget', GaugeWidgetModule.injection);
+.directive('gaugeWidget', GaugeWidgetModule.injection)
+.filter('indicator', indicator);
 
 
 

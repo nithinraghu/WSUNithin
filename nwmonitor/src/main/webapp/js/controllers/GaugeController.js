@@ -30,15 +30,21 @@ var GaugeControllerModule = (function () {
 			$scope.networkAlert = data.networkAlert;
 			$scope.maxCpuPercent = data.maxCpuPercent;
 			$scope.maxDiskPercent = data.maxDiskPercent;
-			$scope.maxNetworkPercent = data.maxNetworkPercent;
+			$scope.maxNetworkPercent = data.maxNetworkPercent;			
 			
 		});
 		
 		$interval( function(){
 			
+			// For testing introduce changes
 			$scope.maxCpuPercent = 100 - $scope.maxCpuPercent;
 			$scope.maxDiskPercent = 100-$scope.maxDiskPercent;
 			$scope.maxNetworkPercent = 100 - $scope.maxNetworkPercent;
+			
+			var lights = ["OK", "CRITICAL", "WARNING" ];							
+			$scope.cpuAlert = lights[Math.floor((Math.random() * 3))];
+			$scope.diskAlert = lights[Math.floor((Math.random() * 3))];
+			$scope.networkAlert = lights[Math.floor((Math.random() * 3))];
 			
 		}, 3000);
 		

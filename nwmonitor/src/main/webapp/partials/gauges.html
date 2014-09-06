@@ -1,15 +1,41 @@
 
-<div ng-controller="GaugeController">
-	<div class="span6">
-		<h2>CPU Utilization</h2>		 
-		<gauge-widget id="cpuUtilizationGauge"  value ={{maxCpuPercent}}></gauge-widget>		 		
-	</div>
-	<div class="span5">
-		<h2>Disk Usage</h2>		 
-		<gauge-widget id="diskUsageGauge" value ={{maxDiskPercent}}></gauge-widget> 		 	
-	</div>
-	<div class="span5">
-		<h2>Network Utilization</h2>				
-		<gauge-widget id="networkUtilizationGauge"  value ={{maxNetworkPercent}}></gauge-widget>			
-	</div>
+<div class = "row"> <div class="span16"> </div></div>
+
+<div ng-controller="GaugeController" class = "row">
+<div class="span16">
+	<div class="row">
+		<div class="span3 offset1 bold-title center">
+			 CPU Utilization  				
+		</div>
+		<div class="span3 offset3 bold-title center">
+			 Disk Usage				
+		</div>
+		<div class="span4 offset2 bold-title center">
+			 Network Utilization				
+		</div>	
+	</div>	
+	<div class="row">
+		<div class="span-one-third" align="center">
+			<button class="ui-button large {{cpuAlert|indicator}}">CPU Status</button>				
+		</div>
+		<div class="span-one-third" align="center">
+			<button class="ui-button large {{diskAlert|indicator}}">Disk Status</button>			
+		</div>
+		<div class="span-one-third" align="center">
+			<button class="ui-button large {{networkAlert|indicator}}">Network Status</button>					
+		</div>	
+	</div>	
+	<div class = "row"> <div class="span16"> </div></div>
+	<div class="row">
+		<div class="span-one-third" align="center">
+			<gauge-widget id="cpuUtilizationGauge"  value ={{maxCpuPercent}}></gauge-widget>					
+		</div>
+		<div class="span-one-third" align="center">
+			<gauge-widget id="diskUsageGauge" value ={{maxDiskPercent}}></gauge-widget> 			
+		</div>
+		<div class="span-one-third" align="center">
+			<gauge-widget id="networkUtilizationGauge"  value ={{maxNetworkPercent}}></gauge-widget>				
+		</div>	
+	</div>		
+	</div>		
 </div>

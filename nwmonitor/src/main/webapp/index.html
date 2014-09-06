@@ -31,6 +31,7 @@
     	<script src="js/controllers/GridController.js"></script> 
     	<script src="js/controllers/GaugeController.js"></script>  
     	<script src="js/directives/GaugeWidget.js"></script>
+    	<script src="js/filters/indicator.js"></script>
     	<script src="js/app.js"></script>
     	  	
     
@@ -49,12 +50,11 @@
                		<ng-include src="'partials/heroUnit.html'"></ng-include>
             	</div>
 			</div>
-			<div class="row">				
-				 <ng-include src="'partials/overviewGrid.html'"></ng-include>
-			</div>     		      		
-            <div class="row">
-                <ng-include src="'partials/gauges.html'"></ng-include>
-            </div>       
+			 	
+			<ng-include src="'partials/overviewGrid.html'"></ng-include>					
+			  		      		            
+            <ng-include src="'partials/gauges.html'"></ng-include>
+            
              <div class="row">
                 <ng-include src="'partials/healthMonitor.html'"></ng-include>
             </div>

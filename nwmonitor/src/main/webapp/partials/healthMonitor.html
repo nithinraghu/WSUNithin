@@ -1,3 +1,13 @@
 
 <h2>Health Monitoring Graph</h2>
-<p>Placeholder for network health monitoring chart</p>
+<div ng-controller="HealthMonitorController">	
+	<div class="ui-form-wrapper">	
+		<select name="mediumSelect" class="medium" 
+			ng-model="currentType" ng-options="measure.type for measure in measures" ng-change="onSelectionChange()">
+		</select>
+	</div>
+	<div>
+		<line-chart id="healthChart"  my-data="chartData"></line-chart>
+		<div id="legend"></div>
+	</div>
+</div>

@@ -37,24 +37,17 @@ var LineChartModule = (function () {
 						        type: "Lines",
 						        markers: true
 						    });
-						 
-						    
+						 						    
 							 // Add axes
 							lineChart.addAxis("x");
 							lineChart.addAxis("y", { min: 0, max: 100, vertical: true, fixLower: "major", fixUpper: "major" });
 						 
 							var chartData = scope.myData;							
-							
-							//var chartData1 = [50,90,25,10,5,35,45,75,65,89,90,95];
-							//var chartData2 = [40,70,15,5,2,25,25,65,55,79,80,85];
-							
-							_.each(chartData, function(data, idx){
-								lineChart.addSeries("CPU - Server"+ (idx+1),data);
+														
+							_.each(chartData, function(chartItem, idx){
+								lineChart.addSeries(chartItem.id, chartItem.data);
 							});
-						
-							//lineChart.addSeries("CPU - Server1",chartData1);
-							//lineChart.addSeries("CPU - Server2",chartData2);
-							
+													
 							// Create the tooltip
 						    var tip = new Tooltip(lineChart,"default");
 						    
@@ -68,12 +61,17 @@ var LineChartModule = (function () {
 						    var legend = new Legend({ chart: lineChart },"legend");
 						    
 						    
-						    scope.$watch("myData", function (newData) {						  
-						    	_.each(newData, function(data, idx){
-									lineChart.updateSeries("CPU - Server"+ (idx+1),data);
+						    scope.$watch("myData", function (newChartData, oldChartData) {						  
+						    	_.each(oldChartData, function(chartData){
+									lineChart.removeSeries(chartData.id);
+								});								    							    							    
+						    	_.each(newChartData, function(chartData){
+									lineChart.addSeries(chartData.id, chartData.data);
 								});
 						    	
 						    	lineChart.render();	
+						    	legend.refresh();
+						    	
 			                });
 					});
 				}				

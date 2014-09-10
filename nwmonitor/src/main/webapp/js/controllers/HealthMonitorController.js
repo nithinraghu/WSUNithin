@@ -18,8 +18,8 @@ var HealthMonitorControllerModule = (function () {
 		$scope.currentType = $scope.measures[0];
 		
 		$scope.chartData = [
-	                    	[50,90,25,10,5,35,45,75,65,89,90,95],
-	                    	[40,70,15,5,2,25,25,65,55,79,80,85]				                    
+	                    	{id: "CPU-Server1" , data : [50,90,25,10,5,35,45,75,65,89,90,95]},
+	                    	{id: "CPU-Server2", data : [40,70,15,5,2,25,25,65,55,79,80,85]}				                    
 	                    ];
 		
 		$scope.onSelectionChange = function(){
@@ -30,20 +30,20 @@ var HealthMonitorControllerModule = (function () {
 			{
 			case 1:
 				$scope.chartData = [
-				                    	[50,90,25,10,5,35,45,75,65,89,90,95],
-				                    	[40,70,15,5,2,25,25,65,55,79,80,85]				                    
+				                    	{id: "CPU-Server1" , data : [50,90,25,10,5,35,45,75,65,89,90,95]},
+				                    	{id: "CPU-Server2" , data : [40,70,15,5,2,25,25,65,55,79,80,85]}			                    
 				                    ];
 				break;
 			case 2:
 				$scope.chartData = [
-			                    	[40,77,20,10,5,35,45,75,65,89,90,95],
-			                    	[50,65,10,5,2,25,25,65,55,79,80,85]				                    
+			                    	{id: "Disk-Server1" , data :[40,77,20,10,5,35,45,75,65,89,90,95]},
+			                    	{id: "Disk-Server2" , data :[50,65,10,5,2,25,25,65,55,79,80,85]}				                    
 			                    ];
 				break;
 			case 3:
 				$scope.chartData = [
-			                    	[90,77,20,10,5,35,65,75,65,79,20,15],
-			                    	[70,65,10,5,2,25,15,65,55,49,60,25]				                    
+			                    	{id: "Network-Server1" , data :[90,77,20,10,5,35,65,75,65,79,20,15]},
+			                    	{id: "Network-Server2" , data : [70,65,10,5,2,25,15,65,55,49,60,25]}				                    
 			                    ];
 				break;
 			}						

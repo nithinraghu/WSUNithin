@@ -1,13 +1,19 @@
 
-<h2>Health Monitoring Graph</h2>
-<div ng-controller="HealthMonitorController">	
-	<div class="ui-form-wrapper">	
-		<select name="mediumSelect" class="medium" 
-			ng-model="currentType" ng-options="measure.type for measure in measures" ng-change="onSelectionChange()">
-		</select>
+<div class = "row"> 
+	<div class="span16 bold-title center"> 
+		Health Monitoring Graph
 	</div>
-	<div>
-		<line-chart id="healthChart"  my-data="chartData"></line-chart>
-		<div id="legend"></div>
-	</div>
+</div>
+<div ng-controller="HealthMonitorController" class="row">
+	<div class="span16">
+		<div class="row">			
+				<select name="mediumSelect" class="small span2" 
+				ng-model="currentType" ng-options="measure.type for measure in measures" ng-change="onSelectionChange()">
+				</select>			
+		</div>
+		<div>
+			<line-chart id="healthChart"  my-data="chartData"></line-chart>
+			<div id="legend"></div>
+		</div>
+	</div>	
 </div>

@@ -21,6 +21,7 @@
 		<!--  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>  -->
     	<script src="lib/jquery.layout.min.js"></script>    	
     	<script src="lib/angular.js"></script>
+    	<script src="lib/angular-route.js"></script>
     	<script src="lib/ng-grid.min.js"></script>
     	<script src="lib/underscore.js"></script>
     	
@@ -29,6 +30,8 @@
     	<!-- Project js files -->
     	<script src="js/services/RestCallService.js"></script>  
     	<script src="js/services/Server.js"></script>
+    	<script src="js/controllers/HomeController.js"></script> 
+    	<script src="js/controllers/BarChartController.js"></script> 
     	<script src="js/controllers/GridController.js"></script> 
     	<script src="js/controllers/GaugeController.js"></script> 
     	<script src="js/controllers/HealthMonitorController.js"></script>  
@@ -45,22 +48,8 @@
         <div class="ui-menubar">
            <ng-include src="'partials/menuBar.html'"></ng-include>
         </div>
-
 	
-        <div class="ui-container">     
-        		        
-            <div class="hero-unit my-heroUnit">
-               		<ng-include src="'partials/heroUnit.html'"></ng-include>
-            </div>						 	
-			<ng-include src="'partials/overviewGrid.html'"></ng-include>					
-			  		      		            
-            <ng-include src="'partials/gauges.html'"></ng-include>
-                        
-            <ng-include src="'partials/healthMonitor.html'"></ng-include>            
-		
-           	<ng-include src="'partials/footer.html'"></ng-include>
-
-        </div> <!-- /ui-container -->
-
+		<div ng-view></div>
+			
     </body>
 </html>

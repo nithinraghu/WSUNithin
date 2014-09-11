@@ -17,3 +17,8 @@
 {
 	padding : 40px
 }
+
+.green {
+    background-color: green;
+    color: white;
+}

@@ -73,6 +73,14 @@ var LineChartModule = (function () {
 						    	legend.refresh();
 						    	
 			                });
+			                
+			                scope.$on('$destroy', function() {
+					            var stackedAreaLegend = dijit.byId("legend");
+								if (stackedAreaLegend) {
+								   stackedAreaLegend.destroyRecursive(true);
+								}
+					            
+					        });
 					});
 				}				
 	      		

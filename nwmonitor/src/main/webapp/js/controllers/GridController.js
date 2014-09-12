@@ -7,7 +7,7 @@ var GridControllerModule = (function () {
 	/*
 	 * Constructor 
 	 */
-	function GrController($scope,Server)
+	function GridController($scope,Server)
 	{	
 		$scope.gridOptions = { data: 'gridData', 
 							   columnDefs: [{field: 'title', displayName: 'Title', width: "40%", resizable: false, enableCellSelection: false,
@@ -49,10 +49,10 @@ var GridControllerModule = (function () {
 	/*
 	 * Injection parameters
 	 */
-	GrController.injection = [
+	GridController.injection = [
 	                          '$scope',
 	                          'Server',
-	                          GrController
+	                          GridController
 	                          ];	
-	return GrController;
+	return GridController;
 })();

@@ -5,41 +5,39 @@ var GaugeWidgetModule = (function () {
 		
 		return {
 	      restrict: 'E',
-	      template: '<div class="specialGauge"></div>',
+	      scope: {
+      		gaugeId: '@'
+    	  },
 	      link: function(scope, element, attrs)
 	      		{
 	      			require([
-	      				"dojo/query", "dojox/gauges/GlossyCircularGauge", "dojo/domReady!"
+	      				"dojox/gauges/GlossyCircularGauge", "dojo/domReady!"
 
- 					], function( query, GlossyCircularGauge) {
+ 					], function( GlossyCircularGauge) {
+ 							var gaugeId = scope.gaugeId;
  					 				
- 					 		var customElementId = element.attr('id');
-							var gaugeId = customElementId + "-glossyGuage";
-							var parent = query("#"+customElementId+" .specialGauge");							
-						
-							var glossyCircular = new GlossyCircularGauge(
-		      											{
-			      											background: [255, 255, 255, 0],
-		        										 	title: 'Value',
-		        										 	value: attrs.value,
-		        										 	id: gaugeId,
-													        width: 150,
-													        height: 150
-												        },parent[0]);
-		
-			    			glossyCircular.startup();	
+ 					 		var glossyCircular = new GlossyCircularGauge({
+										background: [255, 255, 255, 0],
+									 	title: 'Value',
+									 	id: gaugeId,
+						        		width: 150,
+						        		height: 150
+					        }, element[0]).startup();
 			    			
 			    			
 			    			attrs.$observe('value', function (newValue) {
-			    				glossyCircular.set("value", newValue); 
+			    				if (glossyCircular){
+			    					glossyCircular.set("value", newValue);
+			    				}
+			    				 
 			    			});
 			    			
+			    			scope.$on('$destroy', function() {
+					            dojo.destroy(gaugeId);
+					            
+					        });
 			    			
-			    			/*
-			    			scope.$watch(attrs.value, function (newVal, oldVal, scope){			    				
-			    				glossyCircular.set("value", newVal); 
-			    			}, false);
-	      					*/
+			    		
 			    						    						    			
 			    		    
 					});

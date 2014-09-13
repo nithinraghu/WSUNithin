@@ -22,18 +22,17 @@ var GaugeWidgetModule = (function () {
 									 	id: gaugeId,
 						        		width: 150,
 						        		height: 150
-					        }, element[0]).startup();
+					        }, element[0]);
+					        glossyCircular.startup();
 			    			
 			    			
 			    			attrs.$observe('value', function (newValue) {
-			    				if (glossyCircular){
-			    					glossyCircular.set("value", newValue);
-			    				}
+			    				glossyCircular.set("value",newValue);
 			    				 
 			    			});
 			    			
 			    			scope.$on('$destroy', function() {
-					            dojo.destroy(gaugeId);
+					            glossyCircular.destroy();
 					            
 					        });
 			    			

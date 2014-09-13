@@ -21,7 +21,8 @@ var GaugeWidgetModule = (function () {
 									 	title: 'Value',
 									 	id: gaugeId,
 						        		width: 150,
-						        		height: 150
+						        		height: 150,
+						        		noChange: 'true'
 					        }, element[0]);
 					        glossyCircular.startup();
 			    			

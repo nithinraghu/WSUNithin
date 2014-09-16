@@ -248,11 +248,11 @@ var Server = (function() {
 	ServerService.prototype.getBarChartData = function(measure, state)
 	{			
 		return this.RestCallService.getServers().then(function(data){
-			
+
 			var servers = data.data;	
-				
+
 			var resultServers = [];
-															
+
 			if(measure == "CPU")
 			{
 				if(state == "ALL")
@@ -263,7 +263,7 @@ var Server = (function() {
 				{
 					resultServers = _.filter(servers, function(server){ return server.cpuUtilization == state; });
 				}
-				
+
 				resultServerNames = _.map(resultServers, function(server) {return server.id;});
 				resultServerPercent = _.map(resultServers, function(server) {return server.cpuUtilizationPercent;});
 			}
@@ -293,18 +293,18 @@ var Server = (function() {
 				resultServerNames = _.map(resultServers, function(server) {return server.id;});
 				resultServerPercent = _.map(resultServers, function(server) {return server.networkUtilizationPercent;});
 			}
-			
-													
+
+
 			return {
 				serverNames : resultServerNames,
 				serverRates : resultServerPercent							
 			};									
 		});		
-		
+
 		return [];				
 	};
-	
-	
+
+
 	return ServerService;
-	
+
 })();

@@ -48,9 +48,7 @@ var HorizontalBarChartModule = (function () {
 						    }
 						    
 						    var chartRender = function(chartData){
-						    	
-						    	//var chartData = scope.myData ? scope.myData : {id: "BarSeries", data:[]};	
-								
+						    							    										
 								// Create the labels for Y axes
 								var labels = [];
 								labels.push({value: 0, text: ""});

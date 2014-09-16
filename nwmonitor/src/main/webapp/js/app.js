@@ -26,8 +26,10 @@ myApp.service('RestCallService', RestCallService.injection)
 .controller('GaugeController', GaugeControllerModule.injection)
 .controller('HealthMonitorController', HealthMonitorControllerModule.injection)
 .directive('gaugeWidget', GaugeWidgetModule.injection)
+.directive('horiBarChart',HorizontalBarChartModule.injection)
 .directive('lineChart', LineChartModule.injection)
-.filter('indicator', indicator);
+.filter('indicator', indicator)
+.filter('labelState', labelState);
 
 
 

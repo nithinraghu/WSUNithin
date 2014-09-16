@@ -11,14 +11,14 @@ var GridControllerModule = (function () {
 	{	
 		$scope.gridOptions = { data: 'gridData', 
 							   columnDefs: [{field: 'title', displayName: 'Title', width: "40%", resizable: false, enableCellSelection: false,
-								   				cellTemplate: '<a href="./#/BarChart">{{row.getProperty(col.field)}}</a>'}, 
+								   				cellTemplate: '<a href="./#/BarChart?measure={{row.rowIndex}}&state={{col.index}}">{{row.getProperty(col.field)}} </a>'}, 
 							                {field:'critical', displayName:'Critical',width: "20%",resizable: false, enableCellSelection: false, 
-								   				cellTemplate: '<a href="./#/BarChart">{{row.getProperty(col.field)}}</a>'							    
+								   				cellTemplate: '<a href="./#/BarChart?measure={{row.rowIndex}}&state={{col.index}}">{{row.getProperty(col.field)}} </a>'							    
 							            	},
 							                {field:'warning', displayName:'Warning',width: "20%",resizable: false, enableCellSelection: false,
-							            		cellTemplate: '<a href="./#/BarChart">{{row.getProperty(col.field)}}</a>'},
+							            		cellTemplate: '<a href="./#/BarChart?measure={{row.rowIndex}}&state={{col.index}}">{{row.getProperty(col.field)}} </a>'},
 							                {field:'ok', displayName:'OK',width: "20%",resizable: false, enableCellSelection: false,
-							            		cellTemplate: '<a href="./#/BarChart">{{row.getProperty(col.field)}}</a>'}							                
+							            		cellTemplate: '<a href="./#/BarChart?measure={{row.rowIndex}}&state={{col.index}}">{{row.getProperty(col.field)}} </a>'}							                
 							   			   ]							   
 							 }; 	
 		var gridData = [];

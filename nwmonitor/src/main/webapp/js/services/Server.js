@@ -242,6 +242,68 @@ var Server = (function() {
 	};
 	
 	
+	/*
+	 * Method returns data for bar chart page
+	 */
+	ServerService.prototype.getBarChartData = function(measure, state)
+	{			
+		return this.RestCallService.getServers().then(function(data){
+			
+			var servers = data.data;	
+				
+			var resultServers = [];
+															
+			if(measure == "CPU")
+			{
+				if(state == "ALL")
+				{
+					resultServers = servers;
+				}
+				else
+				{
+					resultServers = _.filter(servers, function(server){ return server.cpuUtilization == state; });
+				}
+				
+				resultServerNames = _.map(resultServers, function(server) {return server.id;});
+				resultServerPercent = _.map(resultServers, function(server) {return server.cpuUtilizationPercent;});
+			}
+			else if(measure == "DISK")
+			{
+				if(state == "ALL")
+				{
+					resultServers = servers;
+				}
+				else
+				{
+					resultServers = _.filter(servers, function(server){ return server.diskUsage == state; });
+				}
+				resultServerNames = _.map(resultServers, function(server) {return server.id;});
+				resultServerPercent = _.map(resultServers, function(server) {return server.diskUsagePercent;});
+			}
+			else if(measure == "NETWORK")
+			{
+				if(state == "ALL")
+				{
+					resultServers = servers;
+				}
+				else
+				{
+					resultServers = _.filter(servers, function(server){ return server.networkUtilization == state; });
+				}
+				resultServerNames = _.map(resultServers, function(server) {return server.id;});
+				resultServerPercent = _.map(resultServers, function(server) {return server.networkUtilizationPercent;});
+			}
+			
+													
+			return {
+				serverNames : resultServerNames,
+				serverRates : resultServerPercent							
+			};									
+		});		
+		
+		return [];				
+	};
+	
 	
 	return ServerService;
 	

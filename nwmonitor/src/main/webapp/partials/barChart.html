@@ -1,4 +1,18 @@
-
-<h2>
-	Place holder for barchart
-</h2>
+<div class="ui-container">
+	<div class="row">
+		<div class="span6 bold-title center">
+			Server utilization by {{measure}} 
+		</div>
+		<span class="span2 label {{state|labelState}}">{{state}}</span>
+	</div>
+	<div ng-controller="BarChartController" class="row">
+		<div class="span16">
+			<div>
+				<hori-bar-chart id="hbarChart" my-data="chartData"></hori-bar-chart>				
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span1"  ng-repeat="server in serverNames"> <a href="./#/Home">{{server}}</a> </div>		
+	</div>
+</div>

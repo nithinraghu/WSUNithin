@@ -8,8 +8,12 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.db4o.Db4oEmbedded;
+import com.db4o.ObjectContainer;
+
 import nwmonitor.domain.constants.Thresholds;
 import nwmonitor.domain.enums.ServerStatus;
+import nwmonitor.services.ServerCollection;
 
 public class Server implements Serializable{
 	static int counter = 0;
@@ -30,7 +34,7 @@ public class Server implements Serializable{
 	
 	private String id;
 	
-	private static int STATUS_CHANGE_PERIOD = 2 * 1000;
+	private static int STATUS_CHANGE_PERIOD = 1 * 1000;
 	
 	private static final List<ServerStatus> VALUES = Collections.unmodifiableList(Arrays.asList(ServerStatus.values()));
 	private static final int SIZE = VALUES.size();
@@ -53,11 +57,10 @@ public class Server implements Serializable{
 			counter++;
 			id = "Server/" + counter;
 		}
-		scheduleTrackStatus();
-		
+	
 	}
 	
-	private void scheduleTrackStatus(){
+	public void scheduleTrackStatus(){
 		TimerTask timerTask = new TimerTaskExample();
 		Timer timer = new Timer(true);
 		timer.scheduleAtFixedRate(timerTask, 0, STATUS_CHANGE_PERIOD);
@@ -72,6 +75,8 @@ public class Server implements Serializable{
 		
 		this.networkUtilization = createNewStatus();
 		this.networkUtilizationPercent = createNewPercent(this.networkUtilization);
+		
+		
 	}
 
 	private float createNewPercent(ServerStatus status) {

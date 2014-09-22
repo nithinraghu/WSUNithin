@@ -17,25 +17,15 @@ var BarChartControllerModule = (function () {
 		var measure = convertMeasureParam(measureParam);
 		var state = convertStateParam(stateParam);
 		
-		
-		Server.getBarChartData(measure, state).then(function(result){			
+		function fetchAndUpdate(){
+			var result = Server.getBarChartData(measure, state);
 			$scope.measure = measure;
 			$scope.state = state; 
 			$scope.serverNames = result.serverNames;
-			$scope.chartData = {id: "BarSeries" , data : result.serverRates, servers:result.serverNames };			
-		});
-				
-		$interval( function(){			
-			// For testing introduce changes	
-			var newData = [];
-			_.each($scope.chartData.data, function(value, idx){
-				newData.push(100 - value);				
-			});
-			
-			var serverNames = $scope.chartData.servers;
-			
-			$scope.chartData = {id: "BarSeries" , data : newData, servers: serverNames};
-		}, 10000);
+			$scope.chartData = {id: "BarSeries" , data : result.serverRates, servers:result.serverNames };	
+		}
+					
+		$interval(fetchAndUpdate, 3000);
 					        	       
 	};	
 	

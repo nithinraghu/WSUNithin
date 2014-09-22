@@ -4,10 +4,11 @@
 
 var GridControllerModule = (function () {
 
+	var gridViewUpdateTime = 2000;
 	/*
 	 * Constructor 
 	 */
-	function GridController($scope,Server)
+	function GridController($scope,$interval, Server)
 	{	
 		$scope.gridOptions = { data: 'gridData', 
 							   columnDefs: [{field: 'title', displayName: 'Title', width: "40%", resizable: false, enableCellSelection: false,
@@ -23,8 +24,9 @@ var GridControllerModule = (function () {
 							 }; 	
 		var gridData = [];
 		
-		Server.getOverviewGridData().then(function(data){
-			
+		
+		function fetchAndUpdateData(){
+			var data = Server.getOverviewGridData();
 			var cpuCriticalCount = data.cpuCriticalCount;
 			var cpuWarningCount = data.cpuWarningCount;
 			var cpuOkCount = data.cpuOkCount;
@@ -39,10 +41,12 @@ var GridControllerModule = (function () {
 				                 {title : "Disk Usage", critical: diskCriticalCount, warning: diskWarningCount, ok:diskOkCount},
 				                 {title : "Network Utilization", critical: networkCriticalCount, warning: networkWarningCount, ok:networkOkCount}
 				                ];
-				
-			});
-			
-			$scope.gridData = gridData;
+		}
+		
+		
+		$interval(fetchAndUpdateData, gridViewUpdateTime);
+		
+		
 									
 	};	
 
@@ -51,6 +55,7 @@ var GridControllerModule = (function () {
 	 */
 	GridController.injection = [
 	                          '$scope',
+	                          '$interval',
 	                          'Server',
 	                          GridController
 	                          ];	

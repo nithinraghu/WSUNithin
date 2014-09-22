@@ -81,8 +81,7 @@ public class ServerCollection {
 		
 
 	public List<Server> getAllServers(){
-		Server sample = servers.get(0);
-		System.out.println("Name: "+sample.getName()+"CpuUtilization: "+ sample.getCpuUtilization() +"CpuUtilizationPercent: "+sample.getCpuUtilizationPercent());
+		
 		return servers;
 
 	}

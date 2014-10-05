@@ -74,7 +74,7 @@ public class Server implements Serializable{
 		this.diskUsagePercent = createNewPercent(this.diskUsage);
 		
 		this.networkUtilization = createNewStatus();
-		this.diskUsagePercent = createNewPercent(this.networkUtilization);
+		this.networkUtilizationPercent = createNewPercent(this.networkUtilization);
 		
 		//TODO :- Create a ServerStats object. Pass the serverId, cpuUtilizationPercent, diskUsagePercent, diskUsagePercent to the
 		// constructor of ServerStats object

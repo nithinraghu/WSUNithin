@@ -15,6 +15,9 @@ myApp.config(function($routeProvider) {
 	    templateUrl: 'partials/barChart.html',
 	    controller: 'BarChartController'
 	  })
+	  .when('/Server', {
+	    templateUrl: 'partials/server.html'	    
+	  })
 	  .otherwise({redirectTo: '/Home'});  
 	});
 

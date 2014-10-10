@@ -10,6 +10,7 @@ import com.db4o.ObjectServer;
 import com.db4o.ObjectSet;
 import com.db4o.cs.Db4oClientServer;
 
+import nwmonitor.db.DatabaseConnector;
 import nwmonitor.domain.Server;
 
 public class ServerCollection {
@@ -34,24 +35,15 @@ public class ServerCollection {
 	}
 
 	private ServerCollection(){
-		synchronized(lock){
-			ObjectContainer clientSession = null;
-			try{
-				if (dataBaseServer == null){
-					dataBaseServer = Db4oClientServer.openServer(Db4oClientServer
-							.newServerConfiguration(), DB4OFILENAME , 0);
-				}
-				clientSession = dataBaseServer.openClient();
-				servers = getAllServersFromDatabase(clientSession);
-				if (servers == null || servers.size() == 0){
-					initializeServersAndPersist(clientSession);
-				}
-			}
-			finally{
-				clientSession.close();
-				dataBaseServer.close();
-			}
-		}
+		
+		ObjectServer server = DatabaseConnector.getInstance().getDataBaseSever();
+		ObjectContainer dbSession = DatabaseConnector.getInstance().getConnection();
+		servers = getAllServersFromDatabase(dbSession);
+		if (servers == null || servers.size() == 0){
+			initializeServersAndPersist(dbSession);
+		}		
+		dbSession.close();
+		server.close();
 	}
 
 	private void initializeServersAndPersist(ObjectContainer clientSession) {
